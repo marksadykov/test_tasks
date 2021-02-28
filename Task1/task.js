@@ -1,16 +1,12 @@
 function Class() {}
 Class.extend = function (desc) {
-    console.log(desc);
-    return class {
-        _el;
-        _options;
-        constructor(el, options) {
-            this._el = el;
-            this._options = options;
-        }
-
-        find(selector) {
-            desc.find(selector);
+    return function (el, options) {
+        desc.constructor.apply(this, [el, options]);
+        this.find = desc.find;
+        this.extend = (extended) => {
+            extended.constructor.bind(this);
+            this.handleEvent = extended.handleEvent;
+            this.toggle = extended.toggle;
         }
     };
 };
@@ -28,8 +24,9 @@ var Widget = Class.extend(/** @lends Widget.prototype */{
 });
 
 const menu = document.getElementById('menu');
-const widget = new Widget(menu, 'kek');
-console.log(widget.find('a.js-ctrl'));
+const ddd = new Widget(menu, 'kek');
+console.log(ddd);
+console.log(ddd.find('a.js-ctrl'));
 
 /** @class Dropdown */
 /** @extends Widget */
@@ -50,10 +47,10 @@ var Dropdown = Widget.extend(/** @lends Dropdown.prototype */{
 });
 
 //Используем
-const menu = document.getElementById('menu');
-const dd = new Dropdown(menu, 'kek');
+// const menu = document.getElementById('menu');
+const dd = new Dropdown(menu);
 
-export default widget;
+export default dd;
 
 
 

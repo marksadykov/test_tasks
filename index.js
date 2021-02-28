@@ -1,6 +1,7 @@
-import widget from './Task1/task.js';
+import dd from './Task1/task.js';
 
 // Используем
+console.log(dd);
 
 // Тесты
 // console.log('dd is Class:', dd instanceof Class);
