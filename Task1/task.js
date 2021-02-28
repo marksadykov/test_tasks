@@ -1,6 +1,16 @@
 function Class() {}
 Class.extend = function (desc) {
-    return function (el, options) {
+    // return function (el, options) {
+    //     desc.constructor.apply(this, [el, options]);
+    //     this.find = desc.find;
+    //     this.extend = (extended) => {
+    //         extended.constructor.bind(this);
+    //         this.handleEvent = extended.handleEvent;
+    //         this.toggle = extended.toggle;
+    //     }
+    // };
+
+    desc.extend = function (el, options) {
         desc.constructor.apply(this, [el, options]);
         this.find = desc.find;
         this.extend = (extended) => {
@@ -9,6 +19,8 @@ Class.extend = function (desc) {
             this.toggle = extended.toggle;
         }
     };
+
+    return desc;
 };
 
 /** @class Widget */
@@ -24,9 +36,9 @@ var Widget = Class.extend(/** @lends Widget.prototype */{
 });
 
 const menu = document.getElementById('menu');
-const ddd = new Widget(menu, 'kek');
-console.log(ddd);
-console.log(ddd.find('a.js-ctrl'));
+// const ddd = new Widget(menu, 'kek');
+// console.log(ddd);
+// console.log(ddd.find('a.js-ctrl'));
 
 /** @class Dropdown */
 /** @extends Widget */
