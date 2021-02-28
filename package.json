@@ -1,0 +1,25 @@
+{
+  "name": "test_tasks",
+  "version": "1.0.0",
+  "description": "test tasks for mail",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=http node server",
+    "start2": "node index.js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marksadykov/test_tasks.git"
+  },
+  "keywords": [
+    "test",
+    "mail"
+  ],
+  "author": "Mark Sadykov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marksadykov/test_tasks/issues"
+  },
+  "homepage": "https://github.com/marksadykov/test_tasks#readme"
+}
