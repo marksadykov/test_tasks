@@ -3,7 +3,7 @@ Class.extend = function (desc) {
     return function (el, options) {
         desc.constructor.apply(this, [el, options]);
         this.find = desc.find;
-        this.prototype = function extend (extended) {
+        this.extend = function (extended) {
             extended.constructor.bind(this);
             this.handleEvent = extended.handleEvent;
             this.toggle = extended.toggle;
