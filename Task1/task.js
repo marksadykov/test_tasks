@@ -1,16 +1,6 @@
 function Class() {}
 Class.extend = function (desc) {
-    // return function (el, options) {
-    //     desc.constructor.apply(this, [el, options]);
-    //     this.find = desc.find;
-    //     this.extend = (extended) => {
-    //         extended.constructor.bind(this);
-    //         this.handleEvent = extended.handleEvent;
-    //         this.toggle = extended.toggle;
-    //     }
-    // };
-
-    desc.extend = function (el, options) {
+    return function (el, options) {
         desc.constructor.apply(this, [el, options]);
         this.find = desc.find;
         this.extend = (extended) => {
@@ -20,7 +10,16 @@ Class.extend = function (desc) {
         }
     };
 
-    return desc;
+    // return {
+    //     extend: (extended) =>  function (menu){
+    //         this.menu = menu;
+    //         desc.constructor.apply(this, [menu, 'options']);
+    //         this.find =  desc.find;
+    //         extended.constructor.bind(this);
+    //         this.handleEvent = extended.handleEvent;
+    //         this.toggle = extended.toggle;
+    //     }
+    // };
 };
 
 /** @class Widget */
@@ -36,16 +35,15 @@ var Widget = Class.extend(/** @lends Widget.prototype */{
 });
 
 const menu = document.getElementById('menu');
-// const ddd = new Widget(menu, 'kek');
-// console.log(ddd);
-// console.log(ddd.find('a.js-ctrl'));
+const dd = new Widget(menu);
+console.log(dd);
 
 /** @class Dropdown */
 /** @extends Widget */
 var Dropdown = Widget.extend(/** @lends Dropdown.prototype */{
     constructor: function () {
         Widget.apply(this, arguments);
-        this.find('.js-ctrl').addEventListener('click', this);
+        this.find('.js-ctrl').addEventListener('click', this.handleEvent);
     },
 
     handleEvent: function (evt) {
@@ -53,14 +51,18 @@ var Dropdown = Widget.extend(/** @lends Dropdown.prototype */{
     },
 
     toggle: function () {
-        const menu = this.find('.js-menu');
+        var menu = this.find('.js-menu');
         menu.classList.toggle('collapsed');
     }
 });
 
 //Используем
 // const menu = document.getElementById('menu');
-const dd = new Dropdown(menu);
+// const dd = new Dropdown(menu);
+
+console.log('dd is Class:', dd instanceof Class);
+console.log('dd is Widget:', dd instanceof Widget);
+// console.log('dd is Dropdown:', dd instanceof Dropdown);
 
 export default dd;
 
