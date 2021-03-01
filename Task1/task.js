@@ -3,10 +3,11 @@ Class.extend = function (desc) {
     return function (el, options) {
         desc.constructor.apply(this, [el, options]);
         this.find = desc.find;
-        this.extend = (extended) => {
+        this.prototype = function extend (extended) {
             extended.constructor.bind(this);
             this.handleEvent = extended.handleEvent;
             this.toggle = extended.toggle;
+            return this;
         }
     };
 
@@ -40,21 +41,21 @@ console.log(dd);
 
 /** @class Dropdown */
 /** @extends Widget */
-var Dropdown = Widget.extend(/** @lends Dropdown.prototype */{
-    constructor: function () {
-        Widget.apply(this, arguments);
-        this.find('.js-ctrl').addEventListener('click', this.handleEvent);
-    },
-
-    handleEvent: function (evt) {
-        this.toggle();
-    },
-
-    toggle: function () {
-        var menu = this.find('.js-menu');
-        menu.classList.toggle('collapsed');
-    }
-});
+// var Dropdown = Widget.extend(/** @lends Dropdown.prototype */{
+//     constructor: function () {
+//         Widget.apply(this, arguments);
+//         this.find('.js-ctrl').addEventListener('click', this.handleEvent);
+//     },
+//
+//     handleEvent: function (evt) {
+//         this.toggle();
+//     },
+//
+//     toggle: function () {
+//         var menu = this.find('.js-menu');
+//         menu.classList.toggle('collapsed');
+//     }
+// });
 
 //Используем
 // const menu = document.getElementById('menu');
