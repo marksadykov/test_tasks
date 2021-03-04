@@ -3,7 +3,6 @@ Class.extend = function (desc) {
     const current = function () {
         desc.constructor.apply(this, arguments);
     }
-
     current.prototype = Object.create(this.prototype);
 
     for (let key in desc) {
@@ -52,6 +51,7 @@ const Dropdown = Widget.extend(/** @lends Dropdown.prototype */{
 const menu = document.getElementById('menu');
 const dd = new Dropdown(menu);
 
+//Тесты
 console.log('dd is Class:', dd instanceof Class);
 console.log('dd is Widget:', dd instanceof Widget);
 console.log('dd is Dropdown:', dd instanceof Dropdown);

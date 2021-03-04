@@ -2,24 +2,30 @@ import dd from './Task1/task.js';
 import myMap from "./Task2/task.js";
 import isPalindrome from "./Task3/task.js";
 
+//Task 2 demo
+const customMap = new myMap([['rthlkj', 1],['wewndkjwne', 5]]);
+customMap.set('hjkjh', 'test1');
+customMap.set('op[o[p', 'test2');
+console.log(customMap.get('hjkjh'));
+console.log(customMap.has('hjkjh'));
+console.log(customMap.delete('hjkjh'));
+console.log(customMap.size());
+console.log(customMap.set('kjhkjhk', 'ahha'));
+console.log(customMap.size());
+console.log(customMap.set('kjhkjhk', 'llllla'));
+console.log(customMap.size());
+console.log(customMap.keys());
+console.log(customMap.values());
+console.log(customMap.entries());
+console.log(customMap.clear());
+console.log(customMap.size());
 
-var map1 = new myMap([['hah', 1],['pok', 5]]);
-
-map1.set('0', 'foo');
-map1.set('1', 'bar');
-console.log(map1.get('1'));
-console.log(map1.has('1'));
-console.log(map1.delete('1'));
-console.log(map1.size());
-console.log(map1.set('2', 'ahha'));
-console.log(map1.size());
-console.log(map1.keys());
-console.log(map1.values());
-console.log(map1.entries());
-console.log(map1.clear());
-console.log(map1.size());
-
-
-console.log(isPalindrome('...'));
+//Task 3 demo
+console.log(isPalindrome('abcd')); // false
+console.log(isPalindrome('A man a plan a canal Panama')); // true
+console.log(isPalindrome('') === true);
+console.log(isPalindrome('abcdcba') === true);
+console.log(isPalindrome('abcd') === false);
+console.log(isPalindrome('...') === true);
 
 
