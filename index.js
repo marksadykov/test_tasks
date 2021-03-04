@@ -1,5 +1,6 @@
 import dd from './Task1/task.js';
 import myMap from "./Task2/task.js";
+import isPalindrome from "./Task3/task.js";
 
 
 var map1 = new myMap();
@@ -18,5 +19,7 @@ console.log(map1.entries());
 console.log(map1.clear());
 console.log(map1.size());
 
+
+console.log(isPalindrome('A man a plan a canal Panama'));
 
 
