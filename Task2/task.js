@@ -11,9 +11,17 @@
 
 function myMap(firstSet) {
     this._init();
+    /* возможно в IE11 не сработает */
+    /*
     firstSet && firstSet.forEach((item) => {
         this.set(item[0], item[1]);
     });
+    */
+    if (firstSet) {
+        for(let i = 0; i < firstSet.length; i++) {
+            this.set(firstSet[i][0], firstSet[i][1]);
+        }
+    }
 }
 
 myMap.prototype._init = function () {

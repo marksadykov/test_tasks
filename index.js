@@ -3,7 +3,7 @@ import myMap from "./Task2/task.js";
 import isPalindrome from "./Task3/task.js";
 
 
-var map1 = new myMap();
+var map1 = new myMap([['hah', 1],['pok', 5]]);
 
 map1.set('0', 'foo');
 map1.set('1', 'bar');
