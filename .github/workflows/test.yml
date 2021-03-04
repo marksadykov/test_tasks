@@ -1,0 +1,19 @@
+name: 'Tests for mail-tests'
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: init actions
+        uses: actions/checkout@v2
+      - name: installing node modules
+        run: |
+          sudo npm install
+      - name: function testing
+        run: |
+          sudo npm run test
