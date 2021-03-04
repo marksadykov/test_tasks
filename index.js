@@ -1,6 +1,6 @@
 import dd from './Task1/task.js';
 
-// Используем
-
-// Тесты
+//Используем
 dd.find('k');
+
+

@@ -1,43 +1,16 @@
 function Class(
 ) {this.kek = 'lll'; }
 Class.extend = function (desc) {
-    // return function (el, options) {
-    //     desc.constructor.apply(this, [el, options]);
-    //     this.find = desc.find;
-    //     this.extend = function (extended) {
-    //         extended.constructor.bind(this);
-    //         this.handleEvent = extended.handleEvent;
-    //         this.toggle = extended.toggle;
-    //         return this;
-    //     }
-    // };
-
-    // return {
-    //     extend: (extended) =>  function (menu){
-    //         this.menu = menu;
-    //         desc.constructor.apply(this, [menu, 'options']);
-    //         this.find =  desc.find;
-    //         extended.constructor.bind(this);
-    //         this.handleEvent = extended.handleEvent;
-    //         this.toggle = extended.toggle;
-    //     }
-    // };
-
     // this.prototype = desc;
-    console.log(desc);
-    this.prototype = {
-        el: desc.el,
-        options: desc.options,
-        constructor: desc.constructor,
-        find: desc.find,
-        handleEvent: desc.handleEvent,
-        toggle: desc.toggle,
-        // extend: (extended) => {
-        //     console.log(extended);
-        //     this.prototype = extended;
-        //     this.prototype.haha = 'hahah';
-        // }
-    };
+    // console.log(desc);
+
+    console.log(this);
+    for (let key in desc) {
+        this[String(key)] = desc[key];
+    }
+    for (let key in this) {
+        console.log(key, desc[key]);
+    }
     console.log(this);
     return this;
 };
@@ -53,15 +26,6 @@ var Widget = Class.extend(/** @lends Widget.prototype */{
         return this.el.querySelector(selector);
     },
 });
-
-// const menu = document.getElementById('menu');
-// const ddd = new Widget();
-// for(let prop in ddd) {
-//     console.log(prop);
-// }
-//
-// ddd.constructor(menu, 'l');
-
 
 /** @class Dropdown */
 /** @extends Widget */
@@ -90,6 +54,8 @@ for(let prop in dd) {
 
 dd.constructor(menu, 'j');
 console.log(dd);
+console.log(dd.find('a.js-menu'));
+console.log(dd.toggle());
 
 console.log('dd is Class:', dd instanceof Class);
 console.log('dd is Widget:', dd instanceof Widget);
