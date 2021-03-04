@@ -20,6 +20,6 @@ console.log(map1.clear());
 console.log(map1.size());
 
 
-console.log(isPalindrome('A man a plan a canal Panama'));
+console.log(isPalindrome('...'));
 
 
